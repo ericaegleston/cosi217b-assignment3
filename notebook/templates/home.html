@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Notebook's Index</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <script src="{{ url_for('static', filename='js/toggles.js') }}"></script>
+    </head>
+    <body>
+        {% extends "base.html" %}
+        {% block content %}
+            <h2>Hi! Welcome to your notebook.</h2>
+
+            <div class="flashes_container">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <table class=flashes>
+                        {% for message in messages %}
+                        <tr>
+                            <td class="{{category}}">{{message}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="parent">
+                <div class="narrow">
+                    <div id="note_list" class="box">
+                        <form id="find_notes" name="find_notes" action="/" method="GET" class="find_notes">
+                            <h3>My notes:</h3>
+                            <p>Find notes about: </p>
+                            <input type="text" id="keyword" name="keyword" size=50>
+                            <button type="submit" id="submit_keyword" class="submit_button">Submit</button>
+                        </form>
+                        <br>
+                        {% if keyword %}
+                            <p>Notes about <b>{{keyword}}</b>:<p>
+                        {% else %}
+                            <p>All notes:</p>
+                        {% endif %}
+                            <table>
+                                {% for name in names %}
+                                    <tr>
+                                        <td><a href="{{url_for('get_note', name=name)}}">{{name}}</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                    </div>
+                    <br>  
+                    <div id="reset_notes" class="button_container">
+                        <button id="reset_notes" type="button" onclick="window.location.href = '/' ;"
+                        class="outside_button">See all notes</button>
+                    </div>
+                </div>
+                <div id="add_container" class="box">
+                    <form id="add_note" action="/" method="POST" class="add_note">
+                        <h3>Add a note!</h3>
+                        <p>Name: </p>
+                        <input type="text" id="name" name="name" size=100 value="">
+                        <p>Content: </p>
+                        <textarea id="content" name="content" cols=82 rows=5 value=""></textarea>
+                        <br>
+                        <br>
+                        <button type="submit" id="add_note" class="submit_button">Submit</button>
+                    </form>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </body>
+</html>
