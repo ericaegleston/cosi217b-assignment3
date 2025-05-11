@@ -1,4 +1,4 @@
-# For more information, please refer to https://aka.ms/vscode-docker-python
+# Python 3.11
 FROM python:3.11-slim
 
 # Install pip requirements

@@ -10,12 +10,18 @@ Welcome to My Notebook! This is a simple way to make and store notes in a single
 To activate My Notebook, first clone this repository. 
 
 Then, we'll use Docker to build a container for the app. To build the image for this app, navigate to where this repository is stored using your terminal, and run:
-`docker build -t notebook .`
+```
+docker build -t notebook .
+```
 
 Then, boot up the app by running the image. In your terminal, run:
-`docker run -p 5000:5000 notebook`
+```
+docker run -p 5000:5000 --rm notebook
+```
 
-From there, you should be able to point your browser at http://127.0.0.1:5000 to open the notetaking app. 
+From there, you should be able to point your browser to http://127.0.0.1:5000 to open the notetaking app. 
+
+Note that if you use the above `docker` command to boot up the app, the container created to run the app will be deleted as soon as you quit. 
 
 ### Adding a note
 ![View of the notebook's home screen](images/home.png)
