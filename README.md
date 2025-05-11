@@ -15,7 +15,7 @@ Then, we'll use Docker to build a container for the app. To build the image for 
 Then, boot up the app by running the image. In your terminal, run:
 `docker run -p 5000:5000 notebook`
 
-From there, you should be able to point your browser at ![http://127.0.0.1:5000](http://127.0.0.1:5000) to open the notetaking app. 
+From there, you should be able to point your browser at http://127.0.0.1:5000 to open the notetaking app. 
 
 ### Adding a note
 ![View of the notebook's home screen](images/home.png)
