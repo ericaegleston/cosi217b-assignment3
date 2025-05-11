@@ -7,10 +7,16 @@ Welcome to My Notebook! This is a simple way to make and store notes in a single
 - Adding a note to the notebook
 
 ### Getting started
-To activate My Notebook, first clone this repository and install the requirements found in requirements.txt. Once installed, it should be easy to boot up the application with:
-```
-python run.py
-```
+To activate My Notebook, first clone this repository. 
+
+Then, we'll use Docker to build a container for the app. To build the image for this app, navigate to where this repository is stored using your terminal, and run:
+`docker build -t notebook .`
+
+Then, boot up the app by running the image. In your terminal, run:
+`docker run -p 5000:5000 notebook`
+
+From there, you should be able to point your browser at ![http://127.0.0.1:5000](http://127.0.0.1:5000) to open the notetaking app. 
+
 ### Adding a note
 ![View of the notebook's home screen](images/home.png)
 On startup, you'll be greeted with an empty list on the left, and a form titled **Add a note!** on the right. 
